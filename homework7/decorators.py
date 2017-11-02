@@ -1,6 +1,4 @@
 
-import timeit
-
 def cancel(func):
     def cancel_func():
         return IndexError(func.__name__,'is canceled!')
