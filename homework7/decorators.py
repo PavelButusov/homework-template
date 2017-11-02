@@ -1,3 +1,4 @@
+
 import timeit
 
 def cancel(func):
@@ -21,10 +22,12 @@ def count_execution(func):
 
 
 def catch(func):
-    try:
-        func()
-    except Exception as e:
-        print(e)
+    def wrapper():
+        try:
+            func()
+        except Exception as e:
+            print(e)
+    return wrapper
 
 @cansel
 decorating_function():
