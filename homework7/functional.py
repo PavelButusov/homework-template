@@ -1,33 +1,37 @@
 from functools import reduce
 
+def div_function(value):
+    return value % 5
 
 def modulo_five():
-    list_of_num = [1, 4, 5, 30, 99]
-    def remainder(num):
-        return num % 5
-    result = list(map(remainder, list_of_num))
-    return result
+    meh_list = [1, 4, 5, 30, 99]
+    modulo_five = list(map(div_function, meh_list))
+    return modulo_five
 
 
 def to_string():
-    item = [3, 4, 90, -2]
-    def make_string(string):
-        return str(string)
-    result = list(map(make_string, item))
-    return result
+    meh_list = [3, 4, 90, -2]
+    to_string = list(map(str, meh_list))
+    return to_string
 
 
 def filter_string():
-    list_of_item = ['some', 1, 'v', 40, '3a', str]
-
-    def is_string(items):
-        return not isinstance(items, str)
-
-    no_strings = list(filter(is_string, list_of_item))
-    return no_strings
+    meh_list = ['some', 1, 'v', 40, '3a', str]
+    filter_string = list(filter(lambda item: type(item) is not str, meh_list))
+    return filter_string
 
 
 def count_letters():
-    list_of_word = ['some', 'other', 'value']
-    sum_all = len(reduce(lambda word, word2: word + word2, list_of_word))
-    return sum_all
+    meh_list = ['some', 'other', 'value']
+
+    whole_word=''
+    count_letters = 0
+
+    for item in meh_list:
+        item_word = reduce(lambda word, char: word+char, item)
+        whole_word = whole_word + item_word
+
+    for char in whole_word:
+        count_letters = count_letters + 1
+
+    return count_letters
