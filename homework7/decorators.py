@@ -2,35 +2,30 @@
 import timeit
 
 def cancel(func):
-    def wrapper():
-        print("Method {}:".format(func))
-        raise Exception("Method canceled!")
-        func()
-    return wrapper
-
-def function_speed(func):
-    def wrapper():
-        t1 = time.time()
-        res = func()
-        t2 = time.time()
-        return (t2 - t1), res
-    return wrapper
+    def cancel_func():
+        return IndexError(func.__name__,'is canceled!')
+    return cancel_func
 
 
 def count_execution(func):
-    pass
+    import time
+
+    def wrappers():
+        t = time.clock()
+        return func.__name__, time.clock() - t
+        yield wrappers
+    def wrapper():
+        wrapper.called += 1
+        return func()
+
+    wrapper.called = 0
+    wrapper.__name__ = func.__name__
+    return wrapper
 
 
 def catch(func):
     def wrapper():
         try:
-            func()
+            print(func())
         except Exception as e:
             print(e)
-    return wrapper
-
-@cansel
-decorating_function():
-    print('something')
-
-some = decorating_function()

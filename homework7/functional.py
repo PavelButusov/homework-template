@@ -1,54 +1,33 @@
 from functools import reduce
 
-def div_function(value):
-    return value % 5
 
 def modulo_five():
-<<<<<<< HEAD
-    meh_list = [1, 4, 5, 30, 99]
-    modulo_five = list(map(div_function, meh_list))
-    return modulo_five
+    list_of_num = [1, 4, 5, 30, 99]
+    def remainder(num):
+        return num % 5
+    result = list(map(remainder, list_of_num))
+    return result
 
 
 def to_string():
-    meh_list = [3, 4, 90, -2]
-    to_string = list(map(str, meh_list))
-    return to_string
+    item = [3, 4, 90, -2]
+    def make_string(string):
+        return str(string)
+    result = list(map(make_string, item))
+    return result
 
 
 def filter_string():
-    meh_list = ['some', 1, 'v', 40, '3a', str]
-    filter_string = list(filter(lambda item: type(item) is not str, meh_list))
-    return filter_string
+    list_of_item = ['some', 1, 'v', 40, '3a', str]
+
+    def is_string(items):
+        return not isinstance(items, str)
+
+    no_strings = list(filter(is_string, list_of_item))
+    return no_strings
 
 
 def count_letters():
-    meh_list = ['some', 'other', 'value']
-=======
-    pass
-
-
-def to_string():
-    pass
-
-
-def filter_string():
-    pass
->>>>>>> parent of 85a300f... 1
-
-    whole_word=''
-    count_letters = 0
-
-<<<<<<< HEAD
-    for item in meh_list:
-        item_word = reduce(lambda word, char: word+char, item)
-        whole_word = whole_word + item_word
-
-    for char in whole_word:
-        count_letters = count_letters + 1
-
-    return count_letters
-=======
-def count_letters():
-    pass
->>>>>>> parent of 85a300f... 1
+    list_of_word = ['some', 'other', 'value']
+    sum_all = len(reduce(lambda word, word2: word + word2, list_of_word))
+    return sum_all
